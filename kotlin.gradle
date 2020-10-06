@@ -1,0 +1,12 @@
+dependencies {
+    implementation group: 'org.jetbrains.kotlin', name :'kotlin-stdlib-jdk8', version: "$kotlin_version"
+    implementation group: 'org.jetbrains.kotlin', name :'kotlin-reflect', version: "$kotlin_version"
+
+    implementation group: 'org.jetbrains.kotlinx', name :'kotlinx-coroutines-core-jvm', version: "$kotlin_coroutines"
+
+    testImplementation group: 'org.jetbrains.kotlin', name :'kotlin-test', version: "$kotlin_version"
+    testImplementation group: 'org.jetbrains.kotlin', name :'kotlin-test-common', version: "$kotlin_version"
+    testImplementation group: 'org.jetbrains.kotlin', name :'kotlin-test-annotations-common', version: "$kotlin_version"
+    testImplementation group: 'org.jetbrains.kotlin', name :'kotlin-test-junit', version: "$kotlin_version"
+    testImplementation group: 'org.jetbrains.kotlin', name :'kotlin-test-testng', version: "$kotlin_version"
+}

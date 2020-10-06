@@ -1,0 +1,5 @@
+description 'Leo Framework: Generator'
+
+dependencies {
+    implementation project(':dsl')
+}

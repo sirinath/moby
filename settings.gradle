@@ -1,0 +1,14 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+rootProject.name = 'leo'
+
+include 'gen', 'dsl', 'server', 'pipeline', 'tests'
+
