@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+plugins {
+    id 'base'
+    id 'java'
+    id 'groovy'
+
+    id 'java-gradle-plugin'
+    id 'groovy-gradle-plugin'
+
+    id 'leo.version-conventions'
+}
+
+description 'Leo Framework: Build Conventions'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    google()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation gradleApi()
+
+    implementation project(':version-conventions')
+    implementation project(':java-conventions')
+    implementation project(':groovy-conventions')
+    implementation project(':kotlin-conventions')
+    implementation project(':scala-conventions')
+    implementation project(':test-conventions')
+    implementation project(':common-conventions')
+    implementation project(':bytebuddy-conventions')
+    implementation project(':logging-conventions')
+}

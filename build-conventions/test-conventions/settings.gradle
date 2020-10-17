@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+includeBuild('../version-conventions')
+include('../version-conventions')

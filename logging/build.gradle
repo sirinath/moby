@@ -1,0 +1,4 @@
+group 'io.github.leoframework'
+version '0.0.1-SNAPSHOT'
+
+description 'Leo Framework: Logging'

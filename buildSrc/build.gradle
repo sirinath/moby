@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+plugins {
+    id 'base'
+    id 'java'
+    id 'groovy'
+
+    id 'java-gradle-plugin'
+    id 'groovy-gradle-plugin'
+
+    id 'leo.version-conventions'
+}
+
+description 'Leo Framework: Build Sources'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    google()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation gradleApi()
+    //implimentation project('../build-conventions/version-conventions')
+}

@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+plugins {
+    id 'base'
+    id 'java'
+
+    id 'leo.version-conventions'
+
+    id 'leo.bytebuddy-conventions'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    google()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4j2Version"
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4j2Version"
+
+    implementation group: 'com.conversantmedia', name: 'disruptor', version: "$conversantMediaDisruptorVersion"
+}
+
+byteBuddy {
+    transformation {
+        plugin = LogInjector.class
+    }
+}

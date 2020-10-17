@@ -10,5 +10,16 @@ pluginManagement {
 
 rootProject.name = 'leo'
 
-include 'gen', 'dsl', 'server', 'pipeline', 'tests'
+include ':gen', ':dsl', ':server', ':pipeline', ':testing'
 
+includeBuild('build-conventions/version-conventions')
+includeBuild('build-conventions/java-conventions')
+includeBuild('build-conventions/groovy-conventions')
+includeBuild('build-conventions/kotlin-conventions')
+includeBuild('build-conventions/scala-conventions')
+includeBuild('build-conventions/test-conventions')
+includeBuild('build-conventions/common-conventions')
+includeBuild('build-conventions/bytebuddy-conventions')
+includeBuild('build-conventions/logging-conventions')
+
+includeBuild('build-conventions')

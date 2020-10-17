@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+includeBuild('../version-conventions')
+include('../version-conventions')
+
+includeBuild('../bytebuddy-conventions')
+
+include('../../../aop')
+include('../../../logging')

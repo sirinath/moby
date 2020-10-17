@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+plugins {
+    id 'base'
+    id 'java'
+
+    id 'leo.version-conventions'
+
+    id 'net.bytebuddy.byte-buddy-gradle-plugin' version "$byteBuddyVersion"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    google()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation group: 'net.bytebuddy', name: 'byte-buddy', version: "$byteBuddyVersion"
+}

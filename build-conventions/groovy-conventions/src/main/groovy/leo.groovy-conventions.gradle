@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+plugins {
+	id 'base'
+    id 'java'
+
+    id 'leo.version-conventions'
+
+	id 'groovy'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    google()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation group: 'org.codehaus.groovy', name: 'groovy', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-ant', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-astbuilder', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-cli-picocli', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-console', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-datetime', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-docgenerator', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-groovydoc', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-groovysh', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-jmx', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-json', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-jsr223', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-macro', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-nio', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-servlet', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-sql', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-swing', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-templates', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-test', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-test-junit5', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-testng', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-xml', version: "$groovyVersion", classifier: 'indy'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-yaml', version: "$groovyVersion", classifier: 'indy'
+    
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-ant', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-astbuilder', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-cli-picocli', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-console', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-datetime', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-docgenerator', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-groovydoc', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-groovysh', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-jmx', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-json', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-jsr223', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-macro', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-nio', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-servlet', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-sql', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-swing', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-templates', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-test', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-test-junit5', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-testng', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-xml', version: "$groovyVersion", classifier: 'indy'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-yaml', version: "$groovyVersion", classifier: 'indy'
+}

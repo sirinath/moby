@@ -1,0 +1,36 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		gradlePluginPortal()
+		mavenCentral()
+		google()
+		jcenter()
+	}
+
+	dependencies {
+		classpath project(':version-conventions')
+		classpath project(':java-conventions')
+		classpath project(':groovy-conventions')
+		classpath project(':kotlin-conventions')
+		classpath project(':scala-conventions')
+		classpath project(':test-conventions')
+		classpath project(':common-conventions')
+		classpath project(':bytebuddy-conventions')
+		classpath project(':logging-conventions')
+	}
+}
+
+plugins {
+	id 'base'
+
+	id 'leo.version-conventions'
+
+	id 'leo.java-conventions'
+	id 'leo.groovy-conventions'
+	id 'leo.kotlin-conventions'
+	id 'leo.scala-conventions'
+	id 'leo.test-conventions'
+	id 'leo.common-conventions'
+	id 'leo.bytebuddy-conventions'
+	id 'leo.logging-conventions'
+}

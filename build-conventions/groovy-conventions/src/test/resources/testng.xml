@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="testing" verbose="1" >
+    <test name="base" >
+        <packages>
+            <package name="io.github.leoframework.testing"/>
+        </packages>
+    </test>
+</suite>
