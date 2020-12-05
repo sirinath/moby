@@ -1,0 +1,13 @@
+1603627177522:q
+1603629647609:b
+1603629678903:exit
+1603699365036:fb
+1603699373632:q
+1603699379639:quit
+1603699382517:exit
+1603782462919:update
+1603782584132:reload
+1603782595358:update
+1603791560527:reload
+1603791568143:compile
+1607107760185:;set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile") in _root_.sbt.Global := _root_.scala.Some(_root_.sbt.file("C:/Users/sirin/AppData/Local/Temp/sbt-structure.xml")),SettingKey[_root_.java.lang.String]("sbtStructureOptions") in _root_.sbt.Global := "download, resolveClassifiers");apply -cp "C:/Users/sirin/AppData/Local/JetBrains/Toolbox/apps/IDEA-C/ch-0/203.5981.155.plugins/Scala/repo/org.jetbrains/sbt-structure-extractor/scala_2.12/sbt_1.0/2020.3/jars/sbt-structure-extractor.jar" org.jetbrains.sbt.CreateTasks;*/*:dumpStructure

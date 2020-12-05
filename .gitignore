@@ -11,10 +11,14 @@
 **/.gradle/**
 **/gradle/**
 
+mill.bat
+
 **/local.properties
 **/out/**
+**/target/**
 **/build/**
 **/bin/**
+**/lib/**
 
 **/Thumbs.db
 **/Thumbs.db:encryptable
@@ -23,3 +27,4 @@
 **/[Dd]esktop.ini
 **/*.stackdump
 $RECYCLE.BIN/
+target/task-temp-directory/

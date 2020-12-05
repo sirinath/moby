@@ -1,0 +1,429 @@
+[debug] > Exec(;reload; set _root_.org.jetbrains.sbt.StructureKeys.sbtStructureOptions in Global := "download resolveClassifiers resolveSbtClassifiers" ;*/*:dumpStructureTo C:/Users/sirin/AppData/Local/Temp/sbt-structure.xml; session clear-all ; set ideaPort in Global := 4640, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.4.4 (Azul Systems, Inc. Java 14.0.1)
+[debug]       Load.loadUnit: plugins took 62.3595ms
+[debug]       Load.loadUnit: defsScala took 0.0147ms
+[debug] [Loading] Scanning directory C:\Users\sirin\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\sirin\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 3.6164 ms
+[debug]           Load.resolveProject(global-plugins) took 2.0351ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\sirin\.sbt\1.0\plugins, plugins: List(<none>))) took 6.2337ms
+[debug] [Loading] Done in C:\Users\sirin\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 8.8721ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.0148ms
+[debug]     Load.loadUnit(file:/C:/Users/sirin/.sbt/1.0/plugins/, ...) took 167.5842ms
+[debug]   Load.apply: load took 170.2889ms
+[debug]   Load.apply: resolveProjects took 0.1378ms
+[debug]   Load.apply: finalTransforms took 8.475ms
+[debug]   Load.apply: config.delegates took 0.5204ms
+[debug]   Load.apply: Def.make(settings)... took 76.501ms
+[debug]   Load.apply: structureIndex took 25.7163ms
+[debug]   Load.apply: mkStreams took 0.0038ms
+[info] loading global plugins from C:\Users\sirin\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 1434.3633ms
+[debug]           Load.loadUnit: plugins took 48.6677ms
+[debug]           Load.loadUnit: defsScala took 0.0037ms
+[debug] [Loading] Scanning directory C:\Users\sirin\GitHub\leo\project
+[debug]             Load.loadUnit: mkEval took 0.564ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\sirin\GitHub\leo\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.4675 ms
+[info] loading settings for project leo-build from plugins.sbt,idea.sbt ...
+[debug]               Load.resolveProject(leo-build) took 8.3787ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id leo-build, base: C:\Users\sirin\GitHub\leo\project, plugins: List(<none>))) took 10.3367ms
+[debug] [Loading] Done in C:\Users\sirin\GitHub\leo\project, returning: (leo-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 229.461ms
+[debug]           Load.loadUnit: cleanEvalClasses took 15.1516ms
+[debug]         Load.loadUnit(file:/C:/Users/sirin/GitHub/leo/project/, ...) took 294.6322ms
+[debug]       Load.apply: load took 296.9971ms
+[debug]       Load.apply: resolveProjects took 0.1236ms
+[debug]       Load.apply: finalTransforms took 10.5151ms
+[debug]       Load.apply: config.delegates took 0.3382ms
+[debug]       Load.apply: Def.make(settings)... took 97.4773ms
+[debug]       Load.apply: structureIndex took 26.0077ms
+[debug]       Load.apply: mkStreams took 0.0039ms
+[info] loading project definition from C:\Users\sirin\GitHub\leo\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 1800.5446ms
+[debug]     Load.loadUnit: defsScala took 0.0057ms
+[debug] [Loading] Scanning directory C:\Users\sirin\GitHub\leo
+[debug]       Load.loadUnit: mkEval took 0.4859ms
+[debug] [Loading] Found root project root w/ remaining engine,logging,utils
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(dotty.tools.sbtplugin.DottyIDEPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(dotty.tools.sbtplugin.DottyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(dotty.tools.sbtplugin.DottyIDEPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(dotty.tools.sbtplugin.DottyPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))), Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,dotty.tools.sbtplugin.DottyPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,dotty.tools.sbtplugin.DottyIDEPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 4.2909 ms
+[info] loading settings for project root from build.sbt ...
+[debug]         Load.resolveProject(root) took 73.7447ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: C:\Users\sirin\GitHub\leo, aggregate: List(LocalProject(engine), LocalProject(logging)), dependencies: List(ClasspathDependency(LocalProject(engine),None), ClasspathDependency(LocalProject(logging),None)), plugins: List(<none>))) took 78.9811ms
+[debug] [Loading] Loading project engine @ C:\Users\sirin\GitHub\leo\engine
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(dotty.tools.sbtplugin.DottyIDEPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(dotty.tools.sbtplugin.DottyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(dotty.tools.sbtplugin.DottyIDEPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(dotty.tools.sbtplugin.DottyPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))), Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,dotty.tools.sbtplugin.DottyPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,dotty.tools.sbtplugin.DottyIDEPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 3.5036 ms
+[debug]       Load.resolveProject(engine) took 2.6488ms
+[debug] [Loading] Loading project logging @ C:\Users\sirin\GitHub\leo\logging
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(dotty.tools.sbtplugin.DottyIDEPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(dotty.tools.sbtplugin.DottyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(dotty.tools.sbtplugin.DottyIDEPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(dotty.tools.sbtplugin.DottyPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))), Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,dotty.tools.sbtplugin.DottyPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,dotty.tools.sbtplugin.DottyIDEPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 5.9493 ms
+[debug]       Load.resolveProject(logging) took 2.2344ms
+[debug] [Loading] Loading project utils @ C:\Users\sirin\GitHub\leo\utils
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(dotty.tools.sbtplugin.DottyIDEPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(dotty.tools.sbtplugin.DottyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(dotty.tools.sbtplugin.DottyIDEPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(dotty.tools.sbtplugin.DottyPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))), Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,dotty.tools.sbtplugin.DottyPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,dotty.tools.sbtplugin.DottyIDEPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 2.0877 ms
+[debug]       Load.resolveProject(utils) took 2.6405ms
+[debug] [Loading] Done in C:\Users\sirin\GitHub\leo, returning: (root, engine, logging, utils)
+[debug]     Load.loadUnit: loadedProjectsRaw took 403.2752ms
+[debug]     Load.loadUnit: cleanEvalClasses took 81.0772ms
+[debug]   Load.loadUnit(file:/C:/Users/sirin/GitHub/leo/, ...) took 2286.3663ms
+[debug] Load.apply: load took 2290.315ms
+[debug] Load.apply: resolveProjects took 0.4223ms
+[debug] Load.apply: finalTransforms took 89.3539ms
+[debug] Load.apply: config.delegates took 2.44ms
+[debug] Load.apply: Def.make(settings)... took 392.9646ms
+[debug] Load.apply: structureIndex took 146.9202ms
+[debug] Load.apply: mkStreams took 0.0044ms
+[warn] Discarding 1 session setting.  Use 'session save' to persist session settings.
+[info] set current project to Leo Framework (in build file:/C:/Users/sirin/GitHub/leo/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(set _root_.org.jetbrains.sbt.StructureKeys.sbtStructureOptions in Global := "download resolveClassifiers resolveSbtClassifiers", None, None)
+[info] Defining Global / sbtStructureOptions
+[info] The new value will be used by Global / ssOptions
+[debug] Defining 
+[debug] 	Global / sbtStructureOptions
+[debug] 
+[debug] The new value will be used by 
+[debug] 	Global / ssOptions
+[info] Reapplying settings...
+[info] set current project to Leo Framework (in build file:/C:/Users/sirin/GitHub/leo/)
+[debug] > Exec(*/*:dumpStructureTo C:/Users/sirin/AppData/Local/Temp/sbt-structure.xml, None, None)
+[debug] Evaluating tasks: Global / dumpStructureTo
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[warn] 
+[warn] 	Note: Unresolved dependencies path:
+[warn] 
+[warn] 	Note: Unresolved dependencies path:
+[error] sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] 	at lmcoursier.CoursierDependencyResolution.unresolvedWarningOrThrow(CoursierDependencyResolution.scala:258)
+[error] 	at lmcoursier.CoursierDependencyResolution.$anonfun$update$38(CoursierDependencyResolution.scala:227)
+[error] 	at scala.util.Either$LeftProjection.map(Either.scala:573)
+[error] 	at lmcoursier.CoursierDependencyResolution.update(CoursierDependencyResolution.scala:227)
+[error] 	at sbt.librarymanagement.DependencyResolution.update(DependencyResolution.scala:60)
+[error] 	at sbt.internal.LibraryManagement$.resolve$1(LibraryManagement.scala:53)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$12(LibraryManagement.scala:103)
+[error] 	at sbt.util.Tracked$.$anonfun$lastOutput$1(Tracked.scala:73)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$20(LibraryManagement.scala:116)
+[error] 	at scala.util.control.Exception$Catch.apply(Exception.scala:228)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11(LibraryManagement.scala:116)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11$adapted(LibraryManagement.scala:97)
+[error] 	at sbt.util.Tracked$.$anonfun$inputChangedW$1(Tracked.scala:219)
+[error] 	at sbt.internal.LibraryManagement$.cachedUpdate(LibraryManagement.scala:130)
+[error] 	at sbt.Classpaths$.$anonfun$updateTask0$5(Defaults.scala:3485)
+[error] 	at scala.Function1.$anonfun$compose$1(Function1.scala:49)
+[error] 	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)
+[error] 	at sbt.std.Transform$$anon$4.work(Transform.scala:68)
+[error] 	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)
+[error] 	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)
+[error] 	at sbt.Execute.work(Execute.scala:291)
+[error] 	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
+[error] 	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
+[error] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:832)
+[error] sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] 	at lmcoursier.CoursierDependencyResolution.unresolvedWarningOrThrow(CoursierDependencyResolution.scala:258)
+[error] 	at lmcoursier.CoursierDependencyResolution.$anonfun$update$38(CoursierDependencyResolution.scala:227)
+[error] 	at scala.util.Either$LeftProjection.map(Either.scala:573)
+[error] 	at lmcoursier.CoursierDependencyResolution.update(CoursierDependencyResolution.scala:227)
+[error] 	at sbt.librarymanagement.DependencyResolution.update(DependencyResolution.scala:60)
+[error] 	at sbt.internal.LibraryManagement$.resolve$1(LibraryManagement.scala:53)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$12(LibraryManagement.scala:103)
+[error] 	at sbt.util.Tracked$.$anonfun$lastOutput$1(Tracked.scala:73)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$20(LibraryManagement.scala:116)
+[error] 	at scala.util.control.Exception$Catch.apply(Exception.scala:228)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11(LibraryManagement.scala:116)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11$adapted(LibraryManagement.scala:97)
+[error] 	at sbt.util.Tracked$.$anonfun$inputChangedW$1(Tracked.scala:219)
+[error] 	at sbt.internal.LibraryManagement$.cachedUpdate(LibraryManagement.scala:130)
+[error] 	at sbt.Classpaths$.$anonfun$updateTask0$5(Defaults.scala:3485)
+[error] 	at scala.Function1.$anonfun$compose$1(Function1.scala:49)
+[error] 	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)
+[error] 	at sbt.std.Transform$$anon$4.work(Transform.scala:68)
+[error] 	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)
+[error] 	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)
+[error] 	at sbt.Execute.work(Execute.scala:291)
+[error] 	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
+[error] 	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
+[error] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:832)
+[error] sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] 	at lmcoursier.CoursierDependencyResolution.unresolvedWarningOrThrow(CoursierDependencyResolution.scala:258)
+[error] 	at lmcoursier.CoursierDependencyResolution.$anonfun$update$38(CoursierDependencyResolution.scala:227)
+[error] 	at scala.util.Either$LeftProjection.map(Either.scala:573)
+[error] 	at lmcoursier.CoursierDependencyResolution.update(CoursierDependencyResolution.scala:227)
+[error] 	at sbt.librarymanagement.DependencyResolution.update(DependencyResolution.scala:60)
+[error] 	at sbt.internal.LibraryManagement$.resolve$1(LibraryManagement.scala:53)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$12(LibraryManagement.scala:103)
+[error] 	at sbt.util.Tracked$.$anonfun$lastOutput$1(Tracked.scala:73)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$20(LibraryManagement.scala:116)
+[error] 	at scala.util.control.Exception$Catch.apply(Exception.scala:228)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11(LibraryManagement.scala:116)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11$adapted(LibraryManagement.scala:97)
+[error] 	at sbt.util.Tracked$.$anonfun$inputChangedW$1(Tracked.scala:219)
+[error] 	at sbt.internal.LibraryManagement$.cachedUpdate(LibraryManagement.scala:130)
+[error] 	at sbt.Classpaths$.$anonfun$updateTask0$5(Defaults.scala:3485)
+[error] 	at scala.Function1.$anonfun$compose$1(Function1.scala:49)
+[error] 	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)
+[error] 	at sbt.std.Transform$$anon$4.work(Transform.scala:68)
+[error] 	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)
+[error] 	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)
+[error] 	at sbt.Execute.work(Execute.scala:291)
+[error] 	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
+[error] 	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
+[error] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:832)
+[error] sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] 	at lmcoursier.CoursierDependencyResolution.unresolvedWarningOrThrow(CoursierDependencyResolution.scala:258)
+[error] 	at lmcoursier.CoursierDependencyResolution.$anonfun$update$38(CoursierDependencyResolution.scala:227)
+[error] 	at scala.util.Either$LeftProjection.map(Either.scala:573)
+[error] 	at lmcoursier.CoursierDependencyResolution.update(CoursierDependencyResolution.scala:227)
+[error] 	at sbt.librarymanagement.DependencyResolution.update(DependencyResolution.scala:60)
+[error] 	at sbt.internal.LibraryManagement$.resolve$1(LibraryManagement.scala:53)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$12(LibraryManagement.scala:103)
+[error] 	at sbt.util.Tracked$.$anonfun$lastOutput$1(Tracked.scala:73)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$20(LibraryManagement.scala:116)
+[error] 	at scala.util.control.Exception$Catch.apply(Exception.scala:228)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11(LibraryManagement.scala:116)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11$adapted(LibraryManagement.scala:97)
+[error] 	at sbt.util.Tracked$.$anonfun$inputChangedW$1(Tracked.scala:219)
+[error] 	at sbt.internal.LibraryManagement$.cachedUpdate(LibraryManagement.scala:130)
+[error] 	at sbt.Classpaths$.$anonfun$updateTask0$5(Defaults.scala:3485)
+[error] 	at scala.Function1.$anonfun$compose$1(Function1.scala:49)
+[error] 	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)
+[error] 	at sbt.std.Transform$$anon$4.work(Transform.scala:68)
+[error] 	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)
+[error] 	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)
+[error] 	at sbt.Execute.work(Execute.scala:291)
+[error] 	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
+[error] 	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
+[error] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:832)
+[error] sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] 	at lmcoursier.CoursierDependencyResolution.unresolvedWarningOrThrow(CoursierDependencyResolution.scala:258)
+[error] 	at lmcoursier.CoursierDependencyResolution.$anonfun$update$38(CoursierDependencyResolution.scala:227)
+[error] 	at scala.util.Either$LeftProjection.map(Either.scala:573)
+[error] 	at lmcoursier.CoursierDependencyResolution.update(CoursierDependencyResolution.scala:227)
+[error] 	at sbt.librarymanagement.DependencyResolution.update(DependencyResolution.scala:60)
+[error] 	at sbt.internal.LibraryManagement$.resolve$1(LibraryManagement.scala:53)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$12(LibraryManagement.scala:103)
+[error] 	at sbt.util.Tracked$.$anonfun$lastOutput$1(Tracked.scala:73)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$20(LibraryManagement.scala:116)
+[error] 	at scala.util.control.Exception$Catch.apply(Exception.scala:228)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11(LibraryManagement.scala:116)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11$adapted(LibraryManagement.scala:97)
+[error] 	at sbt.util.Tracked$.$anonfun$inputChangedW$1(Tracked.scala:219)
+[error] 	at sbt.internal.LibraryManagement$.cachedUpdate(LibraryManagement.scala:130)
+[error] 	at sbt.Classpaths$.$anonfun$updateTask0$5(Defaults.scala:3485)
+[error] 	at scala.Function1.$anonfun$compose$1(Function1.scala:49)
+[error] 	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)
+[error] 	at sbt.std.Transform$$anon$4.work(Transform.scala:68)
+[error] 	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)
+[error] 	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)
+[error] 	at sbt.Execute.work(Execute.scala:291)
+[error] 	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
+[error] 	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
+[error] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:832)
+[error] sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] 	at lmcoursier.CoursierDependencyResolution.unresolvedWarningOrThrow(CoursierDependencyResolution.scala:258)
+[error] 	at lmcoursier.CoursierDependencyResolution.$anonfun$update$38(CoursierDependencyResolution.scala:227)
+[error] 	at scala.util.Either$LeftProjection.map(Either.scala:573)
+[error] 	at lmcoursier.CoursierDependencyResolution.update(CoursierDependencyResolution.scala:227)
+[error] 	at sbt.librarymanagement.DependencyResolution.update(DependencyResolution.scala:60)
+[error] 	at sbt.internal.LibraryManagement$.resolve$1(LibraryManagement.scala:53)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$12(LibraryManagement.scala:103)
+[error] 	at sbt.util.Tracked$.$anonfun$lastOutput$1(Tracked.scala:73)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$20(LibraryManagement.scala:116)
+[error] 	at scala.util.control.Exception$Catch.apply(Exception.scala:228)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11(LibraryManagement.scala:116)
+[error] 	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11$adapted(LibraryManagement.scala:97)
+[error] 	at sbt.util.Tracked$.$anonfun$inputChangedW$1(Tracked.scala:219)
+[error] 	at sbt.internal.LibraryManagement$.cachedUpdate(LibraryManagement.scala:130)
+[error] 	at sbt.Classpaths$.$anonfun$updateTask0$5(Defaults.scala:3485)
+[error] 	at scala.Function1.$anonfun$compose$1(Function1.scala:49)
+[error] 	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)
+[error] 	at sbt.std.Transform$$anon$4.work(Transform.scala:68)
+[error] 	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)
+[error] 	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)
+[error] 	at sbt.Execute.work(Execute.scala:291)
+[error] 	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
+[error] 	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
+[error] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:832)
+[error] (logging / update) sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] (utils / update) sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] (ssExtractDependencies) sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] (engine / ssExtractDependencies) sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] (logging / ssExtractDependencies) sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] (utils / ssExtractDependencies) sbt.librarymanagement.ResolveException: Error downloading org.scalameta:munit_3.0.0-M2:0.7.15
+[error]   Not found
+[error]   Not found
+[error]   not found: C:\Users\sirin\.ivy2\local\org.scalameta\munit_3.0.0-M2\0.7.15\ivys\ivy.xml
+[error]   not found: https://repo1.maven.org/maven2/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: C:\Users\sirin\.m2\repository\org\scalameta\munit_3.0.0-M2\0.7.15\munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://jcenter.bintray.com/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://oss.sonatype.org/content/repositories/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://maven.java.net/content/repositories/public/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.typesafe.com/typesafe/releases/org/scalameta/munit_3.0.0-M2/0.7.15/munit_3.0.0-M2-0.7.15.pom
+[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.scalameta/munit_3.0.0-M2/0.7.15/ivys/ivy.xml
+[error] Total time: 309 s (05:09), completed 5 Dec 2020, 09:46:01
+[debug] > Exec(idea-shell, None, None)
+[debug] > Exec(, None, None)
+[debug] > Exec(idea-shell, None, None)

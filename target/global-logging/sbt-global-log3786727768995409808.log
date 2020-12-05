@@ -1,0 +1,6 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(compile, Some(657dba15-c316-4059-b227-91816db1d4c1), Some(CommandSource(console0)))[0m[0J
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: engine / Compile / compile, logging / Compile / compile, Compile / compile[0m[0J
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m[0J
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 7 s, completed 27 Oct 2020, 15:09:34[0m[0J
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m[0J
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m[0J
