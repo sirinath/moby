@@ -22,7 +22,7 @@ public class UnsafeAccess {
 
             unsafe = AccessController.doPrivileged(action);
         } catch (final Exception ex) {
-            UncheckedExceptions.rethrowAsUnchecked(ex);
+            UncheckedExceptions.throwUnchecked(ex);
         } finally {
             UNSAFE = unsafe;
         }

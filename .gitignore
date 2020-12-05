@@ -1,5 +1,6 @@
 **/.git/**
 
+**/.bsp/**
 **/.idea/**
 **/*.iml
 **/*.ipr
@@ -11,7 +12,7 @@
 **/.gradle/**
 **/gradle/**
 
-mill.bat
+**/mill.bat
 
 **/local.properties
 **/out/**
@@ -19,6 +20,8 @@ mill.bat
 **/build/**
 **/bin/**
 **/lib/**
+**/*.class
+**/*.jar
 
 **/Thumbs.db
 **/Thumbs.db:encryptable
