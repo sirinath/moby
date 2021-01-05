@@ -1,43 +1,43 @@
 package com.sirinath.utils.cache;
 
 import com.conversantmedia.util.concurrent.DisruptorBlockingQueue;
-import com.sirinath.utils.lowlevel.memory.Memory;
 
+import java.lang.invoke.VarHandle;
 import java.util.function.Supplier;
 
 public final class SimpleThreadLocalCache<T> extends AbstractSimpleCache<T> {
-    private final ThreadLocal<DisruptorBlockingQueue<T>> threadLocalQueue = new ThreadLocal<DisruptorBlockingQueue<T>>() {
-        @Override
-        protected DisruptorBlockingQueue<T> initialValue() {
-            return new DisruptorBlockingQueue<>(getSize());
-        }
-    };
+   private final ThreadLocal<DisruptorBlockingQueue<T>> threadLocalQueue =
+         new ThreadLocal<DisruptorBlockingQueue<T>>() {
+            @Override
+            protected DisruptorBlockingQueue<T> initialValue() {
+               return new DisruptorBlockingQueue<>(getSize());
+            }
+         };
+   private       Thread                                 lastThread       = Thread.currentThread();
+   private       DisruptorBlockingQueue<T>              lastQueue        = threadLocalQueue.get();
 
-    public SimpleThreadLocalCache(int size, Supplier<T> supplier) {
-        super(size, supplier);
+   public SimpleThreadLocalCache(int size, Supplier<T> supplier) {
+      super(size, supplier);
 
-        preAllocate();
-    }
+      preAllocate();
+   }
 
-    private Thread lastThread = Thread.currentThread();
-    private DisruptorBlockingQueue<T> lastQueue = threadLocalQueue.get();
+   @Override
+   protected final DisruptorBlockingQueue<T> getQueue() {
+      final Thread currentThread = Thread.currentThread();
 
-    @Override
-    protected final DisruptorBlockingQueue<T> getQueue() {
-        final Thread currentThread = Thread.currentThread();
+      DisruptorBlockingQueue<T> lastQueue  = this.lastQueue;
+      final Thread              lastThread = this.lastThread;
+      VarHandle.acquireFence();
 
-        DisruptorBlockingQueue<T> lastQueue = this.lastQueue;
-        final Thread lastThread = this.lastThread;
-        Memory.acquireFence();
+      if (currentThread != lastThread) {
+         lastQueue = threadLocalQueue.get();
 
-        if (currentThread != lastThread) {
-            lastQueue = threadLocalQueue.get();
+         this.lastThread = currentThread;
+         this.lastQueue = lastQueue;
+         VarHandle.releaseFence();
+      }
 
-            this.lastThread = currentThread;
-            this.lastQueue = lastQueue;
-            Memory.releaseFence();
-        }
-
-        return lastQueue;
-    }
+      return lastQueue;
+   }
 }

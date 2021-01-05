@@ -1,4 +1,3 @@
 package com.sirinath.utils.strings;
 
-public class StrUtils {
-}
+public class StrUtils {}
