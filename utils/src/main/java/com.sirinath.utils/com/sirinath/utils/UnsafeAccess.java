@@ -25,4 +25,13 @@ public class UnsafeAccess {
    public static <T extends Throwable> void rethrow(final Throwable t) throws T {
       throw (T) t;
    }
+
+   public static long getFieldOffset(final String field, final Class<?> klass) {
+      try {
+         return UNSAFE.objectFieldOffset(klass.getField(field));
+      } catch (NoSuchFieldException e) {
+         UnsafeAccess.rethrow(e);
+         return -1;
+      }
+   }
 }

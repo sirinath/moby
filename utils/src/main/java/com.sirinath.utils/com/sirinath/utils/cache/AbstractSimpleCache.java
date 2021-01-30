@@ -8,6 +8,12 @@ public abstract class AbstractSimpleCache<T> {
    private final int         size;
    private final Supplier<T> supplier;
 
+   protected abstract DisruptorBlockingQueue<T> getQueue();
+
+   public final int getSize() {
+      return size;
+   }
+
    public AbstractSimpleCache(final int size, final Supplier<T> supplier) {
       this.size = size;
       this.supplier = supplier;
@@ -23,15 +29,9 @@ public abstract class AbstractSimpleCache<T> {
       return queue.remove();
    }
 
-   protected abstract DisruptorBlockingQueue<T> getQueue();
-
    public final boolean put(final T value) {
       final DisruptorBlockingQueue<T> queue = getQueue();
       return queue.offer(value);
-   }
-
-   public final int getSize() {
-      return size;
    }
 
    protected final void preAllocate() {

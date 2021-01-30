@@ -13,14 +13,8 @@ public final class SimpleThreadLocalCache<T> extends AbstractSimpleCache<T> {
                return new DisruptorBlockingQueue<>(getSize());
             }
          };
-   private       Thread                                 lastThread       = Thread.currentThread();
    private       DisruptorBlockingQueue<T>              lastQueue        = threadLocalQueue.get();
-
-   public SimpleThreadLocalCache(int size, Supplier<T> supplier) {
-      super(size, supplier);
-
-      preAllocate();
-   }
+   private       Thread                                 lastThread       = Thread.currentThread();
 
    @Override
    protected final DisruptorBlockingQueue<T> getQueue() {
@@ -39,5 +33,11 @@ public final class SimpleThreadLocalCache<T> extends AbstractSimpleCache<T> {
       }
 
       return lastQueue;
+   }
+
+   public SimpleThreadLocalCache(int size, Supplier<T> supplier) {
+      super(size, supplier);
+
+      preAllocate();
    }
 }

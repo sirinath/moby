@@ -9,90 +9,58 @@ import static com.sirinath.utils.numeric.Integer64Utils.Constants.*;
 import static com.sirinath.utils.numeric.Integer64Utils.FormatInfo.*;
 
 public final class Integer64Utils {
-   private Integer64Utils() {}
-
-   public static final class Constants {
-      public static final long zero     = 0;
-      public static final long one      = 1;
-      public static final long minusOne = -1;
-
-      private Constants() {}
-   }
-
-   public static final class FormatInfo {
-      public static final long bits             = 64;
-      public static final long valueBits        = bits - one;
-      public static final long halfBits         = (bits >> 1);
-      public static final long halfBitsMinusOne = halfBits - one;
-
-      private FormatInfo() {}
-   }
-
-   public static final class BitMasks {
-      public static final long signMask = one << (valueBits);
-      public static final long lowMask  = minusOne >>> halfBits;
-      public static final long highMask = ~lowMask;
-
-      private BitMasks() {}
-   }
-
    public static final class BitExtractors {
-      private BitExtractors() {}
+      public static long extractHigh(final long value) {
+         return value >>> halfBits;
+      }
 
       public static long extractLow(final long value) {
          return maskLow(value);
       }
 
-      public static long maskLow(final long value) {
-         return value & lowMask;
+      public static long extractSign(final long value) {
+         return value >>> valueBits;
       }
 
       public static long maskHigh(final long value) {
          return value & highMask;
       }
 
-      public static long extractHigh(final long value) {
-         return value >>> halfBits;
+      public static long maskLow(final long value) {
+         return value & lowMask;
       }
 
       public static long maskSign(final long value) {
          return value & signMask;
       }
 
-      public static long extractSign(final long value) {
-         return value >>> valueBits;
+      public static long bitWidthMast(final long width) {
+         return ((1L << width) - 1L);
       }
+
+      public static long bitWidthMast(final long width, final long offset) {
+         return bitWidthMast(width) << offset;
+      }
+
+      private BitExtractors() {}
    }
 
-   public static final class Sign {
-      private Sign() {}
+   public static final class BitMasks {
+      public static final long lowMask  = minusOne >>> halfBits;
+      public static final long highMask = ~lowMask;
+      public static final long signMask = one << (valueBits);
 
-      public static boolean isPositive(final long value) {
-         return value > zero;
-      }
-
-      public static boolean isNegative(final long value) {
-         return value < zero;
-      }
-
-      public static boolean isZero(final long value) {
-         return value == zero;
-      }
+      private BitMasks() {}
    }
 
    public static final class Bits {
+      private static final long h                     = 0x01010101; //the sum of 256 to the power of 0,1,2,3...
       // https://en.wikipedia.org/wiki/Hamming_weight
       // types and constants used in the functions below
-      private static final long m1 = 0x55555555; //binary: 0101...
-      private static final long m2 = 0x33333333; //binary: 00110011..
-      private static final long m4 = 0x0f0f0f0f; //binary:  4 zeros,  4 ones ...
-      private static final long h  = 0x01010101; //the sum of 256 to the power of 0,1,2,3...
-
-      private static long longBitsMinusByteBits = bits - Byte.SIZE;
-
-      public static long countZeros(final long x) {
-         return countOnes(~x);
-      }
+      private static final long m1                    = 0x55555555; //binary: 0101...
+      private static final long m2                    = 0x33333333; //binary: 00110011..
+      private static final long m4                    = 0x0f0f0f0f; //binary:  4 zeros,  4 ones ...
+      private static       long longBitsMinusByteBits = bits - Byte.SIZE;
 
       // https://en.wikipedia.org/wiki/Hamming_weight
       //This uses fewer arithmetic operations than any other known
@@ -107,6 +75,14 @@ public final class Integer64Utils {
 
       public static long countOnesLeft(final long x) {
          return countZerosLeft(~x);
+      }
+
+      public static long countOnesRight(final long x) {
+         return countZerosLeft(~x);
+      }
+
+      public static long countZeros(final long x) {
+         return countOnes(~x);
       }
 
       public static long countZerosLeft(final long x) {
@@ -158,43 +134,35 @@ public final class Integer64Utils {
 
          return count;
       }
+   }
 
-      public static long countOnesRight(final long x) {
-         return countZerosLeft(~x);
-      }
+   public static final class Constants {
+      public static final long minusOne = -1;
+      public static final long one      = 1;
+      public static final long zero     = 0;
 
-      public static long floorDivPowOf2(final long value, final long powOf2) {
-         return value >>> powOf2;
-      }
+      private Constants() {}
+   }
 
-      public static boolean divisibleByPowerOf2(final long value, final long powOf2) {
-         if (powOf2 > bits) {
-            return false;
-         } else {
-            return value == ((value >>> powOf2) << powOf2);
-         }
-      }
+   public static final class FormatInfo {
+      public static final long bits             = 64;
+      public static final long halfBits         = (bits >> 1);
+      public static final long halfBitsMinusOne = halfBits - one;
+      public static final long valueBits        = bits - one;
 
-      // compute the next highest power of 2 of 64-bit n
-      public static long nextPowerOf2(long n) {
-         // decrement n (to handle cases when n itself is a power of 2)
-         n--;
-
-         // Set all bits after the last set bit
-         n |= n >> 1;
-         n |= n >> 2;
-         n |= n >> 4;
-         n |= n >> 8;
-         n |= n >> 16;
-         n |= n >> 32;
-
-         // increment n and return
-         return ++n;
-      }
+      private FormatInfo() {}
    }
 
    public static final class Math {
       private Math() {}
+
+      public static long countFactors(long num, final long factor) {
+         long count;
+         for (count = 0; num % factor == 0; count++)
+            num /= factor;
+
+         return count;
+      }
 
       public static long integerPower(long base, long exp) {
          long result = 1;
@@ -210,14 +178,6 @@ public final class Integer64Utils {
          }
 
          return result;
-      }
-
-      public static long countFactors(long num, final long factor) {
-         long count;
-         for (count = 0; num % factor == 0; count++)
-            num /= factor;
-
-         return count;
       }
 
       // https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
@@ -244,9 +204,195 @@ public final class Integer64Utils {
 
          return old_Bezout_t;
       }
+
+      public static boolean divisibleByPowerOf2(final long value, final long powOf2) {
+         if (powOf2 > bits) {
+            return false;
+         } else {
+            return value == ((value >>> powOf2) << powOf2);
+         }
+      }
+
+      public static long floorDivPowOf2(final long value, final long powOf2) {
+         return value >>> powOf2;
+      }
+
+      // compute the next highest power of 2 of 64-bit n
+      public static long nextPowerOf2(long n) {
+         // decrement n (to handle cases when n itself is a power of 2)
+         n--;
+
+         // Set all bits after the last set bit
+         n |= n >> 1;
+         n |= n >> 2;
+         n |= n >> 4;
+         n |= n >> 8;
+         n |= n >> 16;
+         n |= n >> 32;
+
+         // increment n and return
+         return ++n;
+      }
+   }
+
+   public static final class Sign {
+      private Sign() {}
+
+      public static boolean isNegative(final long value) {
+         return value < zero;
+      }
+
+      public static boolean isPositive(final long value) {
+         return value > zero;
+      }
+
+      public static boolean isZero(final long value) {
+         return value == zero;
+      }
    }
 
    public static final class WideNumbers {
+      public static final class Int128 implements AutoCloseable {
+         private long high = 0, low = 0;
+
+         public final long getHigh() {
+            return high;
+         }
+
+         public final void setHigh(final long high) {
+            this.high = high;
+         }
+
+         public final long getLow() {
+            return low;
+         }
+
+         public final void setLow(final long low) {
+            this.low = low;
+         }
+
+         public Int128() {}
+
+         public Int128(final long high, final long low) {
+            this.high = high;
+            this.low = low;
+         }
+
+         final void set(final long high, final long low) {
+            this.high = high;
+            this.low = low;
+         }
+
+         @Override
+         public void close() throws Exception {
+            bigMulResult128.put(this);
+         }
+      }
+
+      public static final class Int196 implements AutoCloseable {
+         private long high = 0, mid = 0, low = 0;
+
+         public final long getHigh() {
+            return high;
+         }
+
+         public final void setHigh(final long high) {
+            this.high = high;
+         }
+
+         public final long getLow() {
+            return low;
+         }
+
+         public final void setLow(final long low) {
+            this.low = low;
+         }
+
+         public final long getMid() {
+            return mid;
+         }
+
+         public final void setMid(long mid) {
+            this.mid = mid;
+         }
+
+         public Int196() {}
+
+         public Int196(final long high, final long mid, final long low) {
+            this.high = high;
+            this.mid = mid;
+            this.low = low;
+         }
+
+         final void set(final long high, final long mid, final long low) {
+            this.high = high;
+            this.mid = mid;
+            this.low = low;
+         }
+
+         @Override
+         public void close() throws Exception {
+            bigMulResult196.put(this);
+         }
+      }
+
+      public static final class Int256 implements AutoCloseable {
+         private long high = 0, midHigh = 0, midLow = 0, low = 0;
+
+         public final long getHigh() {
+            return high;
+         }
+
+         public final void setHigh(final long high) {
+            this.high = high;
+         }
+
+         public final long getLow() {
+            return low;
+         }
+
+         public final void setLow(final long low) {
+            this.low = low;
+         }
+
+         public final long getMidHigh() {
+            return midHigh;
+         }
+
+         public final void setMidHigh(final long midHigh) {
+            this.midHigh = midHigh;
+         }
+
+         public final long getMidLow() {
+            return midLow;
+         }
+
+         public final void setMidLow(final long midLow) {
+            this.midLow = midLow;
+         }
+
+         public Int256() {}
+
+         public Int256(final long high, final long midHigh, final long midLow, final long low) {
+            this.high = high;
+            this.midHigh = midHigh;
+            this.midLow = midLow;
+            this.low = low;
+         }
+
+         final void set(final long high, final long midHigh, final long midLow, final long low) {
+            this.high = high;
+            this.midHigh = midHigh;
+            this.midLow = midLow;
+            this.low = low;
+         }
+
+         @Override
+         public void close() throws Exception {
+            bigMulResult256.put(this);
+         }
+      }
+
       private static final int                            CACHE_SIZE      = 8;
       private static final SimpleThreadLocalCache<Int128> bigMulResult128 = new SimpleThreadLocalCache<>(CACHE_SIZE,
                                                                                                          () -> new Int128());
@@ -286,48 +432,6 @@ public final class Integer64Utils {
          final long tl = ll | (ol << halfBits);
 
          result.set(h, tl);
-      }
-
-      public static long unsignedBigMulHigh(final long x, final long y) {
-         // Split high low
-         final long xh = extractHigh(x);
-         final long xl = extractLow(x);
-         final long yh = extractHigh(y);
-         final long yl = extractLow(y);
-
-         // Multiply individual components to get intermediate result
-         final long l  = xl * yl;
-         final long lh = extractHigh(l);
-
-         // Overlapping results
-         final long o  = xh * yl + xl * yh + lh;
-         final long oh = extractHigh(o);
-
-         final long h = xh * yh + oh;
-
-         return h;
-      }
-
-      public static long unsignedBigMulLow(final long x, final long y) {
-         // Split high low
-         final long xh = extractHigh(x);
-         final long xl = extractLow(x);
-         final long yh = extractHigh(y);
-         final long yl = extractLow(y);
-
-         // Multiply individual components to get intermediate result
-         final long l  = xl * yl;
-         final long lh = extractHigh(l);
-         final long ll = extractLow(l);
-
-         // Overlapping results
-         final long o  = xh * yl + xl * yh + lh;
-         final long ol = extractLow(o);
-
-         // Final combined total
-         final long tl = ll | (ol << halfBits);
-
-         return tl;
       }
 
       public static Int196 unsignedBigMul(final long x, final Int128 y) {
@@ -439,145 +543,48 @@ public final class Integer64Utils {
          unsignedBigMul(x, yh, ym, yl, result);
       }
 
-      public static final class Int128 implements AutoCloseable {
-         private long high = 0, low = 0;
+      public static long unsignedBigMulHigh(final long x, final long y) {
+         // Split high low
+         final long xh = extractHigh(x);
+         final long xl = extractLow(x);
+         final long yh = extractHigh(y);
+         final long yl = extractLow(y);
 
-         public Int128() {}
+         // Multiply individual components to get intermediate result
+         final long l  = xl * yl;
+         final long lh = extractHigh(l);
 
-         public Int128(final long high, final long low) {
-            this.high = high;
-            this.low = low;
-         }
+         // Overlapping results
+         final long o  = xh * yl + xl * yh + lh;
+         final long oh = extractHigh(o);
 
-         public final long getHigh() {
-            return high;
-         }
+         final long h = xh * yh + oh;
 
-         public final void setHigh(final long high) {
-            this.high = high;
-         }
-
-         public final long getLow() {
-            return low;
-         }
-
-         public final void setLow(final long low) {
-            this.low = low;
-         }
-
-         @Override
-         public void close() throws Exception {
-            bigMulResult128.put(this);
-         }
-
-         final void set(final long high, final long low) {
-            this.high = high;
-            this.low = low;
-         }
+         return h;
       }
 
-      public static final class Int196 implements AutoCloseable {
-         private long high = 0, mid = 0, low = 0;
+      public static long unsignedBigMulLow(final long x, final long y) {
+         // Split high low
+         final long xh = extractHigh(x);
+         final long xl = extractLow(x);
+         final long yh = extractHigh(y);
+         final long yl = extractLow(y);
 
-         public Int196() {}
+         // Multiply individual components to get intermediate result
+         final long l  = xl * yl;
+         final long lh = extractHigh(l);
+         final long ll = extractLow(l);
 
-         public Int196(final long high, final long mid, final long low) {
-            this.high = high;
-            this.mid = mid;
-            this.low = low;
-         }
+         // Overlapping results
+         final long o  = xh * yl + xl * yh + lh;
+         final long ol = extractLow(o);
 
-         public final long getHigh() {
-            return high;
-         }
+         // Final combined total
+         final long tl = ll | (ol << halfBits);
 
-         public final void setHigh(final long high) {
-            this.high = high;
-         }
-
-         public final long getMid() {
-            return mid;
-         }
-
-         public final void setMid(long mid) {
-            this.mid = mid;
-         }
-
-         public final long getLow() {
-            return low;
-         }
-
-         public final void setLow(final long low) {
-            this.low = low;
-         }
-
-         @Override
-         public void close() throws Exception {
-            bigMulResult196.put(this);
-         }
-
-         final void set(final long high, final long mid, final long low) {
-            this.high = high;
-            this.mid = mid;
-            this.low = low;
-         }
-      }
-
-      public static final class Int256 implements AutoCloseable {
-         private long high = 0, midHigh = 0, midLow = 0, low = 0;
-
-         public Int256() {}
-
-         public Int256(final long high, final long midHigh, final long midLow, final long low) {
-            this.high = high;
-            this.midHigh = midHigh;
-            this.midLow = midLow;
-            this.low = low;
-         }
-
-         public final long getMidHigh() {
-            return midHigh;
-         }
-
-         public final void setMidHigh(final long midHigh) {
-            this.midHigh = midHigh;
-         }
-
-         public final long getMidLow() {
-            return midLow;
-         }
-
-         public final void setMidLow(final long midLow) {
-            this.midLow = midLow;
-         }
-
-         public final long getHigh() {
-            return high;
-         }
-
-         public final void setHigh(final long high) {
-            this.high = high;
-         }
-
-         public final long getLow() {
-            return low;
-         }
-
-         public final void setLow(final long low) {
-            this.low = low;
-         }
-
-         @Override
-         public void close() throws Exception {
-            bigMulResult256.put(this);
-         }
-
-         final void set(final long high, final long midHigh, final long midLow, final long low) {
-            this.high = high;
-            this.midHigh = midHigh;
-            this.midLow = midLow;
-            this.low = low;
-         }
+         return tl;
       }
    }
+
+   private Integer64Utils() {}
 }
