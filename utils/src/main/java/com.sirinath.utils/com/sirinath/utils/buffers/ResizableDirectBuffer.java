@@ -3,16 +3,13 @@ package com.sirinath.utils.buffers;
 import com.sirinath.utils.UnsafeAccess;
 import sun.misc.Unsafe;
 
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-
 public class ResizableDirectBuffer extends AbstractDirectBuffer {
    private static final Unsafe UNSAFE = UnsafeAccess.UNSAFE;
 
    private long address;
    private long indexScale;
    private long size;
-   private long   sizeInBytes;
+   private long sizeInBytes;
 
    private final FreeMemory freeMemory;
 
@@ -46,16 +43,14 @@ public class ResizableDirectBuffer extends AbstractDirectBuffer {
    }
 
    private ResizableDirectBuffer(final long indexScale, final long size, final long sizeInBytes) {
-      this(UNSAFE.allocateMemory(sizeInBytes), indexScale, size,
-           sizeInBytes);
+      this(UNSAFE.allocateMemory(sizeInBytes), indexScale, size, sizeInBytes);
    }
 
    public ResizableDirectBuffer(final BufferMeta bufferMeta, final long size) {
       this(bufferMeta.getIndexScale(), size, size * bufferMeta.getIndexScale());
    }
 
-   private synchronized void wrap(final long address, final long indexScale, final long size,
-                                    final long sizeInBytes) {
+   private synchronized void wrap(final long address, final long indexScale, final long size, final long sizeInBytes) {
       this.address = address;
       this.indexScale = indexScale;
       this.size = size;

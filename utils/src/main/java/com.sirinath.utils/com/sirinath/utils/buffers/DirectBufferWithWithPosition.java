@@ -7,7 +7,8 @@ public class DirectBufferWithWithPosition extends DirectBuffer implements Buffer
    private static final Unsafe UNSAFE = UnsafeAccess.UNSAFE;
 
    private volatile     long position;
-   private static final long positionOffset = UnsafeAccess.getFieldOffset("position", DirectBufferWithWithPosition.class);
+   private static final long positionOffset = UnsafeAccess.getFieldOffset("position",
+                                                                          DirectBufferWithWithPosition.class);
 
    @Override
    public final long getPositionFieldOffset() {

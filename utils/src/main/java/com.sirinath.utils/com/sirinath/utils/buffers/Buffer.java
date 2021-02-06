@@ -279,11 +279,9 @@ public interface Buffer {
 
    void putOrderedObject(long index, Object x);
 
-   void copy(long srcOffset, AbstractDirectBuffer destBuffer, long destOffset,
-             long elements);
+   void copy(long srcOffset, AbstractDirectBuffer destBuffer, long destOffset, long elements);
 
-   void copy(long srcOffset, AbstractArrayBuffer destBuffer, long destOffset,
-             long elements);
+   void copy(long srcOffset, AbstractArrayBuffer destBuffer, long destOffset, long elements);
 
    default void fullFence() {
       UNSAFE.fullFence();
@@ -922,7 +920,8 @@ public interface Buffer {
       return baseOffset + index * scale;
    }
 
-   static void copy(final Object srcBase, final long srcOffset, final Object destBase, final long destOffset, final long bytes) {
+   static void copy(final Object srcBase, final long srcOffset, final Object destBase, final long destOffset,
+                    final long bytes) {
       UNSAFE.copyMemory(srcBase, srcOffset, destBase, destOffset, bytes);
    }
 

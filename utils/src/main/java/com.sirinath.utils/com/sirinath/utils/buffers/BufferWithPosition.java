@@ -11,12 +11,12 @@ public interface BufferWithPosition extends Buffer {
    long getPositionFieldOffset();
 
    default <T extends AbstractArrayBuffer & BufferWithPosition> void copyToArrayBuffer(final T destBuffer,
-                                                                                      final long elements) {
+                                                                                       final long elements) {
       copy(getPosition(), destBuffer, destBuffer.getPosition(), elements);
    }
 
    default <T extends AbstractArrayBuffer & BufferWithPosition> void copyToDirectBuffer(final T destBuffer,
-                                                                                       final long elements) {
+                                                                                        final long elements) {
       copy(getPosition(), destBuffer, destBuffer.getPosition(), elements);
    }
 

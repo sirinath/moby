@@ -11,13 +11,13 @@ public class ResizableArrayBuffer extends AbstractArrayBuffer {
 
    private static final Sizer<byte[]>    byteSizer    = Arrays::copyOf;
    private static final Sizer<boolean[]> booleanSizer = Arrays::copyOf;
-   private static final Sizer<char[]>   charSizer   = Arrays::copyOf;
-   private static final Sizer<double[]> doubleSizer = Arrays::copyOf;
-   private static final Sizer<float[]> floatSizer = Arrays::copyOf;
-   private static final Sizer<int[]>    intSizer  = Arrays::copyOf;
-   private static final Sizer<long[]>   longSizer  = Arrays::copyOf;
-   private static final Sizer<Object[]> objSizer   = Arrays::copyOf;
-   private static final Sizer<short[]>  shortSizer = Arrays::copyOf;
+   private static final Sizer<char[]>    charSizer    = Arrays::copyOf;
+   private static final Sizer<double[]>  doubleSizer  = Arrays::copyOf;
+   private static final Sizer<float[]>   floatSizer   = Arrays::copyOf;
+   private static final Sizer<int[]>     intSizer     = Arrays::copyOf;
+   private static final Sizer<long[]>    longSizer    = Arrays::copyOf;
+   private static final Sizer<Object[]>  objSizer     = Arrays::copyOf;
+   private static final Sizer<short[]>   shortSizer   = Arrays::copyOf;
 
    private Sizer sizer;
 
@@ -33,16 +33,6 @@ public class ResizableArrayBuffer extends AbstractArrayBuffer {
    }
 
    @Override
-   public final long getSize() {
-      return size;
-   }
-
-   @Override
-   public final long getSizeInBytes() {
-      return sizeInBytes;
-   }
-
-   @Override
    public final long getBaseOffset() {
       return baseOffset;
    }
@@ -50,6 +40,16 @@ public class ResizableArrayBuffer extends AbstractArrayBuffer {
    @Override
    public final long getIndexScale() {
       return indexScale;
+   }
+
+   @Override
+   public final long getSize() {
+      return size;
+   }
+
+   @Override
+   public final long getSizeInBytes() {
+      return sizeInBytes;
    }
 
    public <T> ResizableArrayBuffer(final T[] array) {
@@ -61,7 +61,10 @@ public class ResizableArrayBuffer extends AbstractArrayBuffer {
    }
 
    public ResizableArrayBuffer(final boolean[] array) {
-      this(booleanSizer, (Object) array, Unsafe.ARRAY_BOOLEAN_BASE_OFFSET, Unsafe.ARRAY_BOOLEAN_INDEX_SCALE,
+      this(booleanSizer,
+           (Object) array,
+           Unsafe.ARRAY_BOOLEAN_BASE_OFFSET,
+           Unsafe.ARRAY_BOOLEAN_INDEX_SCALE,
            array.length);
    }
 

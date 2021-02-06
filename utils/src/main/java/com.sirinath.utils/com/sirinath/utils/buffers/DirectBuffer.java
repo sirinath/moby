@@ -1,7 +1,6 @@
 package com.sirinath.utils.buffers;
 
 import com.sirinath.utils.UnsafeAccess;
-
 import sun.misc.Unsafe;
 
 public class DirectBuffer extends AbstractDirectBuffer {
@@ -10,7 +9,7 @@ public class DirectBuffer extends AbstractDirectBuffer {
    private final long address;
    private final long indexScale;
    private final long size;
-   private final long   sizeInBytes;
+   private final long sizeInBytes;
 
    private final FreeMemory freeMemory;
 
@@ -44,8 +43,7 @@ public class DirectBuffer extends AbstractDirectBuffer {
    }
 
    private DirectBuffer(final long indexScale, final long size, final long sizeInBytes) {
-      this(UNSAFE.allocateMemory(sizeInBytes), indexScale, size,
-           sizeInBytes);
+      this(UNSAFE.allocateMemory(sizeInBytes), indexScale, size, sizeInBytes);
    }
 
    public DirectBuffer(final BufferMeta bufferMeta, final long size) {

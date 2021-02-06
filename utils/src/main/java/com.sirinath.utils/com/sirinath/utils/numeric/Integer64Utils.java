@@ -156,10 +156,10 @@ public final class Integer64Utils {
    public static final class Math {
       private Math() {}
 
-      public static long countFactors(long num, final long factor) {
+      public static long countFactors(long number, final long factor) {
          long count;
-         for (count = 0; num % factor == 0; count++)
-            num /= factor;
+         for (count = 0; number % factor == 0; count++)
+            number /= factor;
 
          return count;
       }

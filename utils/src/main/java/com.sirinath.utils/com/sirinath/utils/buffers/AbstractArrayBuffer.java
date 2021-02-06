@@ -13,24 +13,6 @@ public abstract class AbstractArrayBuffer implements Buffer {
    public abstract long getIndexScale();
 
    @Override
-   public final void copy(final long srcOffset, final AbstractArrayBuffer destBuffer, final long destOffset,
-                          final long elements) {
-      Buffer.copy(getArray(), Buffer.calculateIndex(getBaseOffset(), srcOffset, getIndexScale()),
-                  destBuffer.getArray(), Buffer.calculateIndex(destBuffer.getBaseOffset(), destOffset,
-                                                               destBuffer.getIndexScale()),
-                                                    elements * getIndexScale());
-   }
-
-   @Override
-   public final void copy(final long srcOffset, final AbstractDirectBuffer destBuffer, final long destOffset,
-                          final long elements) {
-      Buffer.copy(getArray(), Buffer.calculateIndex(getBaseOffset(), srcOffset, getIndexScale()),
-                  null, Buffer.calculateIndex(destBuffer.getAddress(), destOffset,
-                                                               destBuffer.getIndexScale()),
-                  elements * getIndexScale());
-   }
-
-   @Override
    public final boolean compareAndSwapInt(final long index, final int expected, final int x) {
       return UNSAFE.compareAndSwapInt(getArray(),
                                       Buffer.calculateIndex(getBaseOffset(), index, Unsafe.ARRAY_INT_INDEX_SCALE),
@@ -314,5 +296,25 @@ public abstract class AbstractArrayBuffer implements Buffer {
       UNSAFE.putOrderedObject(getArray(),
                               Buffer.calculateIndex(getBaseOffset(), index, Unsafe.ARRAY_OBJECT_INDEX_SCALE),
                               x);
+   }
+
+   @Override
+   public final void copy(final long srcOffset, final AbstractDirectBuffer destBuffer, final long destOffset,
+                          final long elements) {
+      Buffer.copy(getArray(),
+                  Buffer.calculateIndex(getBaseOffset(), srcOffset, getIndexScale()),
+                  null,
+                  Buffer.calculateIndex(destBuffer.getAddress(), destOffset, destBuffer.getIndexScale()),
+                  elements * getIndexScale());
+   }
+
+   @Override
+   public final void copy(final long srcOffset, final AbstractArrayBuffer destBuffer, final long destOffset,
+                          final long elements) {
+      Buffer.copy(getArray(),
+                  Buffer.calculateIndex(getBaseOffset(), srcOffset, getIndexScale()),
+                  destBuffer.getArray(),
+                  Buffer.calculateIndex(destBuffer.getBaseOffset(), destOffset, destBuffer.getIndexScale()),
+                  elements * getIndexScale());
    }
 }

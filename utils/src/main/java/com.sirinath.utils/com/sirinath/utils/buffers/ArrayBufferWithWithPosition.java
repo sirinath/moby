@@ -9,7 +9,8 @@ public final class ArrayBufferWithWithPosition extends ArrayBuffer implements Bu
    private static final Unsafe UNSAFE = UnsafeAccess.UNSAFE;
 
    private volatile     long position;
-   private static final long positionOffset = UnsafeAccess.getFieldOffset("position", ArrayBufferWithWithPosition.class);
+   private static final long positionOffset = UnsafeAccess.getFieldOffset("position",
+                                                                          ArrayBufferWithWithPosition.class);
 
    @Override
    public final long getPositionFieldOffset() {
