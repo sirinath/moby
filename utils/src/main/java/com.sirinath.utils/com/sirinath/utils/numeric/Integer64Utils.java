@@ -5,13 +5,12 @@ import com.sirinath.utils.cache.SimpleThreadLocalCache;
 import static com.sirinath.utils.numeric.Integer64Utils.BitExtractors.extractHigh;
 import static com.sirinath.utils.numeric.Integer64Utils.BitExtractors.extractLow;
 import static com.sirinath.utils.numeric.Integer64Utils.BitMasks.*;
-import static com.sirinath.utils.numeric.Integer64Utils.Constants.*;
 import static com.sirinath.utils.numeric.Integer64Utils.FormatInfo.*;
 
 public final class Integer64Utils {
    public static final class BitExtractors {
       public static long extractHigh(final long value) {
-         return value >>> halfBits;
+         return value >>> HALF_SIZE;
       }
 
       public static long extractLow(final long value) {
@@ -23,15 +22,15 @@ public final class Integer64Utils {
       }
 
       public static long maskHigh(final long value) {
-         return value & highMask;
+         return value & HIGH_MASK;
       }
 
       public static long maskLow(final long value) {
-         return value & lowMask;
+         return value & LOW_MASK;
       }
 
       public static long maskSign(final long value) {
-         return value & signMask;
+         return value & SIGN_MASK;
       }
 
       public static long bitWidthMast(final long width) {
@@ -46,9 +45,9 @@ public final class Integer64Utils {
    }
 
    public static final class BitMasks {
-      public static final long lowMask  = minusOne >>> halfBits;
-      public static final long highMask = ~lowMask;
-      public static final long signMask = one << (valueBits);
+      public static final long LOW_MASK  = -1L >>> HALF_SIZE;
+      public static final long HIGH_MASK = ~LOW_MASK;
+      public static final long SIGN_MASK = 1L << (valueBits);
 
       private BitMasks() {}
    }
@@ -60,7 +59,7 @@ public final class Integer64Utils {
       private static final long m1                    = 0x55555555; //binary: 0101...
       private static final long m2                    = 0x33333333; //binary: 00110011..
       private static final long m4                    = 0x0f0f0f0f; //binary:  4 zeros,  4 ones ...
-      private static       long longBitsMinusByteBits = bits - Byte.SIZE;
+      private static       long longBitsMinusByteBits = BITS - Byte.SIZE;
 
       // https://en.wikipedia.org/wiki/Hamming_weight
       //This uses fewer arithmetic operations than any other known
@@ -90,14 +89,14 @@ public final class Integer64Utils {
          long half = extractHigh(x);
 
          if (half != 0) {
-            count = halfBitsMinusOne;
+            count = HALF_SIZE_MINUS_ONE;
          } else {
             half = extractLow(x);
 
             if (half != 0) {
                count = valueBits;
             } else {
-               count = bits;
+               count = BITS;
             }
          }
 
@@ -115,14 +114,14 @@ public final class Integer64Utils {
          long half = extractLow(x);
 
          if (half != 0) {
-            count = halfBitsMinusOne;
+            count = HALF_SIZE_MINUS_ONE;
          } else {
             half = extractHigh(x);
 
             if (half != 0) {
                count = valueBits;
             } else {
-               count = bits;
+               count = BITS;
             }
          }
 
@@ -136,19 +135,11 @@ public final class Integer64Utils {
       }
    }
 
-   public static final class Constants {
-      public static final long minusOne = -1;
-      public static final long one      = 1;
-      public static final long zero     = 0;
-
-      private Constants() {}
-   }
-
    public static final class FormatInfo {
-      public static final long bits             = 64;
-      public static final long halfBits         = (bits >> 1);
-      public static final long halfBitsMinusOne = halfBits - one;
-      public static final long valueBits        = bits - one;
+      public static final long BITS                = 64;
+      public static final long HALF_SIZE           = (BITS >> 1);
+      public static final long HALF_SIZE_MINUS_ONE = HALF_SIZE - 1L;
+      public static final long valueBits           = BITS - 1L;
 
       private FormatInfo() {}
    }
@@ -206,7 +197,7 @@ public final class Integer64Utils {
       }
 
       public static boolean divisibleByPowerOf2(final long value, final long powOf2) {
-         if (powOf2 > bits) {
+         if (powOf2 > BITS) {
             return false;
          } else {
             return value == ((value >>> powOf2) << powOf2);
@@ -239,15 +230,15 @@ public final class Integer64Utils {
       private Sign() {}
 
       public static boolean isNegative(final long value) {
-         return value < zero;
+         return value < 0;
       }
 
       public static boolean isPositive(final long value) {
-         return value > zero;
+         return value > 0;
       }
 
       public static boolean isZero(final long value) {
-         return value == zero;
+         return value == 0;
       }
    }
 
@@ -429,7 +420,7 @@ public final class Integer64Utils {
          final long h = xh * yh + oh;
 
          // Final combined total
-         final long tl = ll | (ol << halfBits);
+         final long tl = ll | (ol << HALF_SIZE);
 
          result.set(h, tl);
       }
@@ -472,8 +463,8 @@ public final class Integer64Utils {
          final long h = xh * yhh + o2h;
 
          // Final combined total
-         final long tl = ll | (o1l << halfBits);
-         final long tm = o1h | (o2l << halfBits);
+         final long tl = ll | (o1l << HALF_SIZE);
+         final long tm = o1h | (o2l << HALF_SIZE);
 
          result.set(h, tm, tl);
       }
@@ -497,7 +488,10 @@ public final class Integer64Utils {
          return result;
       }
 
-      public static void unsignedBigMul(final long x, final long yh, final long ym, final long yl,
+      public static void unsignedBigMul(final long x,
+                                        final long yh,
+                                        final long ym,
+                                        final long yl,
                                         final Int256 result) {
          final long xh = extractHigh(x);
          final long xl = extractLow(x);
@@ -529,9 +523,9 @@ public final class Integer64Utils {
          final long h = xh * yhh + o3h;
 
          // Final combined total
-         final long tl  = ll | (o1l << halfBits);
-         final long tml = o1h | (o2l << halfBits);
-         final long tmh = o2h | (o3l << halfBits);
+         final long tl  = ll | (o1l << HALF_SIZE);
+         final long tml = o1h | (o2l << HALF_SIZE);
+         final long tmh = o2h | (o3l << HALF_SIZE);
 
          result.set(h, tmh, tml, tl);
       }
@@ -580,7 +574,7 @@ public final class Integer64Utils {
          final long ol = extractLow(o);
 
          // Final combined total
-         final long tl = ll | (ol << halfBits);
+         final long tl = ll | (ol << HALF_SIZE);
 
          return tl;
       }

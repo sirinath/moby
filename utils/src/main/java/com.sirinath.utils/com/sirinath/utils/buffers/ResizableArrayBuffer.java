@@ -92,8 +92,11 @@ public class ResizableArrayBuffer extends AbstractArrayBuffer {
       this(charSizer, (Object) array, Unsafe.ARRAY_CHAR_BASE_OFFSET, Unsafe.ARRAY_CHAR_INDEX_SCALE, array.length);
    }
 
-   private ResizableArrayBuffer(final Sizer<?> sizer, final Object array, final long baseOffset,
-                                final long indexScale, final long size) {
+   private ResizableArrayBuffer(final Sizer<?> sizer,
+                                final Object array,
+                                final long baseOffset,
+                                final long indexScale,
+                                final long size) {
       this.sizer = sizer;
       this.array = array;
       this.baseOffset = baseOffset;
@@ -138,8 +141,11 @@ public class ResizableArrayBuffer extends AbstractArrayBuffer {
       wrap(charSizer, (Object) array, Unsafe.ARRAY_CHAR_BASE_OFFSET, Unsafe.ARRAY_CHAR_INDEX_SCALE, array.length);
    }
 
-   private synchronized void wrap(final Sizer<?> sizer, final Object array, final long baseOffset,
-                                  final long indexScale, final long size) {
+   private synchronized void wrap(final Sizer<?> sizer,
+                                  final Object array,
+                                  final long baseOffset,
+                                  final long indexScale,
+                                  final long size) {
       this.sizer = sizer;
       this.array = array;
       this.baseOffset = baseOffset;

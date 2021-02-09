@@ -299,7 +299,9 @@ public abstract class AbstractArrayBuffer implements Buffer {
    }
 
    @Override
-   public final void copy(final long srcOffset, final AbstractDirectBuffer destBuffer, final long destOffset,
+   public final void copy(final long srcOffset,
+                          final AbstractDirectBuffer destBuffer,
+                          final long destOffset,
                           final long elements) {
       Buffer.copy(getArray(),
                   Buffer.calculateIndex(getBaseOffset(), srcOffset, getIndexScale()),
@@ -309,7 +311,9 @@ public abstract class AbstractArrayBuffer implements Buffer {
    }
 
    @Override
-   public final void copy(final long srcOffset, final AbstractArrayBuffer destBuffer, final long destOffset,
+   public final void copy(final long srcOffset,
+                          final AbstractArrayBuffer destBuffer,
+                          final long destOffset,
                           final long elements) {
       Buffer.copy(getArray(),
                   Buffer.calculateIndex(getBaseOffset(), srcOffset, getIndexScale()),

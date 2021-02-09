@@ -5,10 +5,6 @@ import static com.sirinath.utils.numeric.Binary64FloatingPointUtils.BitExtractor
 import static com.sirinath.utils.numeric.Binary64FloatingPointUtils.BitMasks.*;
 import static com.sirinath.utils.numeric.Binary64FloatingPointUtils.FormatInfo.*;
 
-// https://github.com/abolz/Drachennest/
-// https://github.com/jk-jeon/dragonbox/
-// https://github.com/miloyip/itoa-benchmark
-// https://stackoverflow.com/questions/18118408/what-is-the-difference-between-quiet-nan-and-signaling-nan
 public final class Binary64FloatingPointUtils {
    public static final class BitExtractors {
       private BitExtractors() {}
@@ -70,11 +66,11 @@ public final class Binary64FloatingPointUtils {
       }
 
       private static long extractExponent(final long value) {
-         return maskExponent(value) >>> significandBits;
+         return maskExponent(value) >>> SIGNIFICAND_BITS;
       }
 
       private static long extractHigh(final long value) {
-         return value >>> halfBits;
+         return value >>> HALF_SIZE;
       }
 
       private static long extractLow(final long value) {
@@ -82,7 +78,7 @@ public final class Binary64FloatingPointUtils {
       }
 
       private static long extractNaNErrorHandling(final long value) {
-         return maskNaNErrorHandling(value) >>> (NaNPayloadPortionSize);
+         return maskNaNErrorHandling(value) >>> (NAN_PAYLOAD_PORTION_SIZE);
       }
 
       private static long extractNaNPayload(final long value) {
@@ -90,7 +86,7 @@ public final class Binary64FloatingPointUtils {
       }
 
       private static long extractSign(final long value) {
-         return value >>> bitsExcludingSign;
+         return value >>> BITS_EXCLUDING_SIGN;
       }
 
       private static long extractSignificand(final long value) {
@@ -98,91 +94,91 @@ public final class Binary64FloatingPointUtils {
       }
 
       private static long maskExponent(final long value) {
-         return value & exponentMask;
+         return value & EXPONENT_MASK;
       }
 
       private static long maskHigh(final long value) {
-         return value & highMask;
+         return value & HIGH_MASK;
       }
 
       private static long maskLow(final long value) {
-         return value & lowMask;
+         return value & LOW_MASK;
       }
 
       private static long maskNaNErrorHandling(final long value) {
-         return value & NaNErrorHandlingMask;
+         return value & NAN_ERROR_HANDLING_MASK;
       }
 
       private static long maskNaNPayload(final long value) {
-         return value & NaNPayloadPortionMask;
+         return value & NAN_PAYLOAD_PORTION_MASK;
       }
 
       private static long maskSign(final long value) {
-         return value & signMask;
+         return value & SIGN_MASK;
       }
 
       private static long maskSignificand(final long value) {
-         return value & significandMask;
+         return value & SIGNIFICAND_MASK;
       }
    }
 
    public static final class BitMasks {
-      public static final long NaNErrorHandlingMask  = (Integer64Utils.Constants.one << (NaNPayloadPortionSize));
-      public static final long exponentMask          =
-            ((Integer64Utils.Constants.one << exponentBits) - Integer64Utils.Constants.one) << significandBits;
-      public static final long lowMask               = Integer64Utils.Constants.minusOne >>> halfBits;
-      public static final long highMask              = ~lowMask;
-      public static final long quiteNaNMask          = exponentMask | NaNErrorHandlingMask;
-      public static final long signMask              = Integer64Utils.Constants.one << (bitsExcludingSign);
-      public static final long signedExponentMask    = exponentMask | signMask;
-      public static final long signedQuiteNaNMask    = quiteNaNMask | signMask;
-      public static final long significandMask       =
-            (Integer64Utils.Constants.one << significandBits) - Integer64Utils.Constants.one;
-      public static final long NaNPayloadPortionMask = significandMask >>> Integer64Utils.Constants.one;
+      public static final long NAN_ERROR_HANDLING_MASK  = (1L << (NAN_PAYLOAD_PORTION_SIZE));
+      public static final long EXPONENT_MASK            = ((1L << EXPONENT_BITS) - 1L) << SIGNIFICAND_BITS;
+      public static final long LOW_MASK                 = -1L >>> HALF_SIZE;
+      public static final long HIGH_MASK                = ~LOW_MASK;
+      public static final long QUITE_NAN_MASK           = EXPONENT_MASK | NAN_ERROR_HANDLING_MASK;
+      public static final long SIGN_MASK                = 1L << (BITS_EXCLUDING_SIGN);
+      public static final long SIGNED_EXPONENT_MASK     = EXPONENT_MASK | SIGN_MASK;
+      public static final long SIGNED_QUITE_NAN_MASK    = QUITE_NAN_MASK | SIGN_MASK;
+      public static final long SIGNIFICAND_MASK         = (1L << SIGNIFICAND_BITS) - 1L;
+      public static final long NAN_PAYLOAD_PORTION_MASK = SIGNIFICAND_MASK >>> 1L;
+      public static final long HIDDEN_MASK              = NAN_ERROR_HANDLING_MASK;
 
       private BitMasks() {}
    }
 
    public static final class Constants {
-      public static final  long NEGATIVE_INFINITY_BITS       = signedExponentMask;
-      public static final  long NEGATIVE_QUITE_NaN_BITS      = signedQuiteNaNMask;
-      public static final  long NEGATIVE_ZERO_BITS           = signMask;
-      public static final  long POSITIVE_INFINITY_BITS       = exponentMask;
-      public static final  long POSITIVE_QUITE_NaN_BITS      = quiteNaNMask;
-      public static final  long POSITIVE_ZERO_BITS           = Integer64Utils.Constants.zero;
-      private static final long NEGATIVE_SIGNALLING_NaN_BITS = signedExponentMask; // NEGATIVE_INFINITY_BITS
-      private static final long POSITIVE_SIGNALLING_NaN_BITS = exponentMask; // POSITIVE_INFINITY_BITS
+      public static final  long NEGATIVE_INFINITY_BITS       = SIGNED_EXPONENT_MASK;
+      public static final  long NEGATIVE_QUITE_NAN_BITS      = SIGNED_QUITE_NAN_MASK;
+      public static final  long NEGATIVE_ZERO_BITS           = SIGN_MASK;
+      public static final  long POSITIVE_INFINITY_BITS       = EXPONENT_MASK;
+      public static final  long POSITIVE_QUITE_NAN_BITS      = QUITE_NAN_MASK;
+      public static final  long POSITIVE_ZERO_BITS           = 0L;
+      private static final long NEGATIVE_SIGNALLING_NAN_BITS = SIGNED_EXPONENT_MASK; // NEGATIVE_INFINITY_BITS
+      private static final long POSITIVE_SIGNALLING_NAN_BITS = EXPONENT_MASK; // POSITIVE_INFINITY_BITS
+      private static final long HIDDEN_BIT                   = HIDDEN_MASK;
 
       private Constants() {}
 
       public static long NEGATIVE_QUITE_NaN_BITS(final long payload) {
-         return NEGATIVE_QUITE_NaN_BITS | (NaNPayloadPortionMask & payload);
+         return NEGATIVE_QUITE_NAN_BITS | (NAN_PAYLOAD_PORTION_MASK & payload);
       }
 
       public static long NEGATIVE_SIGNALLING_NaN_BITS(final long payload) { // payload must be non zero
-         return NEGATIVE_SIGNALLING_NaN_BITS | (NaNPayloadPortionMask & payload);
+         return NEGATIVE_SIGNALLING_NAN_BITS | (NAN_PAYLOAD_PORTION_MASK & payload);
       }
 
       public static long POSITIVE_QUITE_NaN_BITS(final long payload) {
-         return POSITIVE_QUITE_NaN_BITS | (NaNPayloadPortionMask & payload);
+         return POSITIVE_QUITE_NAN_BITS | (NAN_PAYLOAD_PORTION_MASK & payload);
       }
 
       public static long POSITIVE_SIGNALLING_NaN_BITS(final long payload) { // payload must be non zero
-         return POSITIVE_SIGNALLING_NaN_BITS | (NaNPayloadPortionMask & payload);
+         return POSITIVE_SIGNALLING_NAN_BITS | (NAN_PAYLOAD_PORTION_MASK & payload);
       }
    }
 
    public static final class FormatInfo {
-      public static final long bits                  = 64;
-      public static final long bitsExcludingSign     = bits - Integer64Utils.Constants.one;
-      public static final long decimalDigits         = 17;
-      public static final long exponentBias          = -1023;
-      public static final long exponentBits          = 11;
-      public static final long halfBits              = (bits >> 1);
-      public static final long maxExponent           = 1023;
-      public static final long minExponent           = 1022;
-      public static final long significandBits       = 52;
-      public static final long NaNPayloadPortionSize = significandBits - Integer64Utils.Constants.one;
+      public static final long BITS                     = 64;
+      public static final long BITS_EXCLUDING_SIGN      = BITS - 1L;
+      public static final long DECIMAL_DIGITS           = 17;
+      public static final long EXPONENT_BIAS            = -1023;
+      public static final long EXPONENT_BITS            = 11;
+      public static final long HALF_SIZE                = (BITS >> 1);
+      public static final long MAX_EXPONENT             = 1023;
+      public static final long MIN_EXPONENT             = 1022;
+      public static final long SIGNIFICAND_BITS         = 52;
+      public static final long NAN_PAYLOAD_PORTION_SIZE = SIGNIFICAND_BITS - 1L;
 
       private FormatInfo() {}
    }
@@ -284,7 +280,7 @@ public final class Binary64FloatingPointUtils {
       }
 
       private static boolean isFinite(final long value) {
-         return (value & exponentMask) != exponentMask;
+         return (value & EXPONENT_MASK) != EXPONENT_MASK;
       }
 
       private static boolean isInf(final long value) {
@@ -294,99 +290,93 @@ public final class Binary64FloatingPointUtils {
       // If payload is zero in a signalling NaN then this is same as Inf rules.
       // To avoid it check if payload is non zero.
       private static boolean isNaN(final long value) {
-         return ((value & exponentMask) == exponentMask) &&
-                (extractSignificand(value) != Integer64Utils.Constants.zero);
+         return ((value & EXPONENT_MASK) == EXPONENT_MASK) && (extractSignificand(value) != 0L);
       }
 
       private static boolean isNaN(final long value, final long payload) {
-         return ((value & exponentMask) == exponentMask) &&
-                (extractSignificand(value) != Integer64Utils.Constants.zero) && (extractNaNPayload(value) == payload);
+         return ((value & EXPONENT_MASK) == EXPONENT_MASK) && (extractSignificand(value) != 0L) && (extractNaNPayload(
+               value) == payload);
       }
 
       private static boolean isNegativeInf(final long value) {
-         return value == signedExponentMask;
+         return value == SIGNED_EXPONENT_MASK;
       }
 
       private static boolean isNegativeNaN(final long value) {
-         return ((value & signedExponentMask) == signedExponentMask) &&
-                (extractSignificand(value) != Integer64Utils.Constants.zero);
+         return ((value & SIGNED_EXPONENT_MASK) == SIGNED_EXPONENT_MASK) && (extractSignificand(value) != 0L);
       }
 
       private static boolean isNegativeNaN(final long value, final long payload) {
-         return ((value & signedExponentMask) == signedExponentMask) &&
-                (extractSignificand(value) != Integer64Utils.Constants.zero) && (extractNaNPayload(value) == payload);
+         return ((value & SIGNED_EXPONENT_MASK) == SIGNED_EXPONENT_MASK) && (extractSignificand(value) != 0L) &&
+                (extractNaNPayload(value) == payload);
       }
 
       private static boolean isNegativeQuiteNaN(final long value) {
-         return (value & signedQuiteNaNMask) == signedQuiteNaNMask;
+         return (value & SIGNED_QUITE_NAN_MASK) == SIGNED_QUITE_NAN_MASK;
       }
 
       private static boolean isNegativeQuiteNaN(final long value, final long payload) {
-         return ((value & signedQuiteNaNMask) == signedQuiteNaNMask) && (extractNaNPayload(value) == payload);
+         return ((value & SIGNED_QUITE_NAN_MASK) == SIGNED_QUITE_NAN_MASK) && (extractNaNPayload(value) == payload);
       }
 
       private static boolean isNegativeSignallingNaN(final long value) {
-         return ((value & signedQuiteNaNMask) == signedExponentMask) &&
-                (extractNaNPayload(value) != Integer64Utils.Constants.zero);
+         return ((value & SIGNED_QUITE_NAN_MASK) == SIGNED_EXPONENT_MASK) && (extractNaNPayload(value) != 0L);
       }
 
       private static boolean isNegativeSignallingNaN(final long value, final long payload) {
-         return ((value & signedQuiteNaNMask) == signedExponentMask) && (extractNaNPayload(value) == payload) &&
-                (payload != Integer64Utils.Constants.zero);
+         return ((value & SIGNED_QUITE_NAN_MASK) == SIGNED_EXPONENT_MASK) && (extractNaNPayload(value) == payload) &&
+                (payload != 0L);
       }
 
       private static boolean isNoneFinite(final long value) {
-         return (value & exponentMask) == exponentMask;
+         return (value & EXPONENT_MASK) == EXPONENT_MASK;
       }
 
       private static boolean isPositiveInf(final long value) {
-         return value == exponentMask;
+         return value == EXPONENT_MASK;
       }
 
       private static boolean isPositiveNaN(final long value) {
-         return ((value & signedExponentMask) == exponentMask) &&
-                (extractSignificand(value) != Integer64Utils.Constants.zero);
+         return ((value & SIGNED_EXPONENT_MASK) == EXPONENT_MASK) && (extractSignificand(value) != 0L);
       }
 
       private static boolean isPositiveNaN(final long value, final long payload) {
-         return ((value & signedExponentMask) == exponentMask) &&
-                (extractSignificand(value) != Integer64Utils.Constants.zero) && (extractNaNPayload(value) == payload);
+         return ((value & SIGNED_EXPONENT_MASK) == EXPONENT_MASK) && (extractSignificand(value) != 0L) &&
+                (extractNaNPayload(value) == payload);
       }
 
       private static boolean isPositiveQuiteNaN(final long value) {
-         return (value & signedQuiteNaNMask) == quiteNaNMask;
+         return (value & SIGNED_QUITE_NAN_MASK) == QUITE_NAN_MASK;
       }
 
       private static boolean isPositiveQuiteNaN(final long value, final long payload) {
-         return ((value & signedQuiteNaNMask) == quiteNaNMask) && (extractNaNPayload(value) == payload);
+         return ((value & SIGNED_QUITE_NAN_MASK) == QUITE_NAN_MASK) && (extractNaNPayload(value) == payload);
       }
 
       private static boolean isPositiveSignallingNaN(final long value) {
-         return ((value & signedQuiteNaNMask) == exponentMask) &&
-                (extractNaNPayload(value) != Integer64Utils.Constants.zero);
+         return ((value & SIGNED_QUITE_NAN_MASK) == EXPONENT_MASK) && (extractNaNPayload(value) != 0L);
       }
 
       private static boolean isPositiveSignallingNaN(final long value, final long payload) {
-         return ((value & signedQuiteNaNMask) == exponentMask) && (extractNaNPayload(value) == payload) &&
-                (payload != Integer64Utils.Constants.zero);
+         return ((value & SIGNED_QUITE_NAN_MASK) == EXPONENT_MASK) && (extractNaNPayload(value) == payload) &&
+                (payload != 0L);
       }
 
       // Quite bit makes the Significand non zero
       private static boolean isQuiteNaN(final long value) {
-         return (value & quiteNaNMask) == quiteNaNMask;
+         return (value & QUITE_NAN_MASK) == QUITE_NAN_MASK;
       }
 
       private static boolean isQuiteNaN(final long value, final long payload) {
-         return ((value & quiteNaNMask) == quiteNaNMask) && (extractNaNPayload(value) == payload);
+         return ((value & QUITE_NAN_MASK) == QUITE_NAN_MASK) && (extractNaNPayload(value) == payload);
       }
 
       private static boolean isSignallingNaN(final long value) {
-         return ((value & quiteNaNMask) == exponentMask) && (extractNaNPayload(value) != Integer64Utils.Constants.zero);
+         return ((value & QUITE_NAN_MASK) == EXPONENT_MASK) && (extractNaNPayload(value) != 0L);
       }
 
       private static boolean isSignallingNaN(final long value, final long payload) {
-         return ((value & quiteNaNMask) == exponentMask) && (extractNaNPayload(value) == payload) &&
-                (payload != Integer64Utils.Constants.zero);
+         return ((value & QUITE_NAN_MASK) == EXPONENT_MASK) && (extractNaNPayload(value) == payload) && (payload != 0L);
       }
    }
 
@@ -404,11 +394,11 @@ public final class Binary64FloatingPointUtils {
       }
 
       private static boolean isNegative(final long value) {
-         return value < Integer64Utils.Constants.zero;
+         return value < 0L;
       }
 
       private static boolean isPositive(final long value) {
-         return value > Integer64Utils.Constants.zero;
+         return value > 0L;
       }
    }
 
@@ -436,23 +426,23 @@ public final class Binary64FloatingPointUtils {
       }
 
       private static boolean isNegativeZero(final long value) {
-         return value == Integer64Utils.Constants.zero;
+         return value == 0L;
       }
 
       private static boolean isNonZero(final long value) {
-         return (value << 1) != Integer64Utils.Constants.zero;
+         return (value << 1) != 0L;
       }
 
       private static boolean isPositiveZero(final long value) {
-         return value == signMask;
+         return value == SIGN_MASK;
       }
 
       private static boolean isSubnormal(final long value) {
-         return (value & exponentMask) == Integer64Utils.Constants.zero;
+         return (value & EXPONENT_MASK) == 0L;
       }
 
       private static boolean isZero(final long value) {
-         return (value << 1) == Integer64Utils.Constants.zero;
+         return (value << 1) == 0L;
       }
    }
 

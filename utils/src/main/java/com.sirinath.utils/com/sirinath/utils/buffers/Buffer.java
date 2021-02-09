@@ -324,7 +324,9 @@ public interface Buffer {
       return compareAndSwapShort(index, (short) expected, (short) x);
    }
 
-   default boolean compareAndSwapDouble(final long index, final double expected, final double x,
+   default boolean compareAndSwapDouble(final long index,
+                                        final double expected,
+                                        final double x,
                                         final ByteOrder byteOrder) {
       return compareAndSwapDouble(index, Buffer.toByteOrder(expected, byteOrder), Buffer.toByteOrder(x, byteOrder));
    }
@@ -333,7 +335,9 @@ public interface Buffer {
       return compareAndSwapLong(index, Double.doubleToRawLongBits(expected), Double.doubleToRawLongBits(x));
    }
 
-   default boolean compareAndSwapFloat(final long index, final float expected, final float x,
+   default boolean compareAndSwapFloat(final long index,
+                                       final float expected,
+                                       final float x,
                                        final ByteOrder byteOrder) {
       return compareAndSwapFloat(index, Buffer.toByteOrder(expected, byteOrder), Buffer.toByteOrder(x, byteOrder));
    }
@@ -350,7 +354,9 @@ public interface Buffer {
       return compareAndSwapLong(index, Buffer.toByteOrder(expected, byteOrder), Buffer.toByteOrder(x, byteOrder));
    }
 
-   default boolean compareAndSwapShort(final long index, final short expected, final short x,
+   default boolean compareAndSwapShort(final long index,
+                                       final short expected,
+                                       final short x,
                                        final ByteOrder byteOrder) {
       return compareAndSwapShort(index, Buffer.toByteOrder(expected, byteOrder), Buffer.toByteOrder(x, byteOrder));
    }
@@ -920,7 +926,10 @@ public interface Buffer {
       return baseOffset + index * scale;
    }
 
-   static void copy(final Object srcBase, final long srcOffset, final Object destBase, final long destOffset,
+   static void copy(final Object srcBase,
+                    final long srcOffset,
+                    final Object destBase,
+                    final long destOffset,
                     final long bytes) {
       UNSAFE.copyMemory(srcBase, srcOffset, destBase, destOffset, bytes);
    }
